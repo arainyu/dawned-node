@@ -1,0 +1,197 @@
+Express server listening on port \\.\pipe\279ee72a-aa1e-4a14-8709-dcdb9598f1cf
+[90mGET /admin/menus [32m200 [90m305ms - 6.1kb[0m
+[90mGET /bootstrap/css/bootstrap.css [32m200 [90m8ms - 140.07kb[0m
+[90mGET /javascripts/libs/require.js [32m200 [90m4ms - 105.95kb[0m
+[90mGET /bootstrap/img/glyphicons-halflings.png [32m200 [90m38ms - 12.5kb[0m
+[90mGET /javascripts/admin/menu.js [32m200 [90m2ms - 2.31kb[0m
+[90mGET /javascripts/libs/knockout-2.3.0.js [32m200 [90m6ms - 41.73kb[0m
+[90mGET /bootstrap/js/bootstrap.min.js [32m200 [90m27ms - 26.27kb[0m
+[90mGET /javascripts/libs/knockout.mapping-latest.js [32m200 [90m27ms - 9.3kb[0m
+Error: Failed to lookup view "[object Object]"
+    at Function.app.render (D:\WebSites\dawned-node\webApp\node_modules\express\lib\application.js:493:17)
+    at ServerResponse.res.render (D:\WebSites\dawned-node\webApp\node_modules\express\lib\response.js:753:7)
+    at exports.menus.editMenuType (D:\WebSites\dawned-node\webApp\routes\admin.js:33:6)
+    at callbacks (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:161:37)
+    at param (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:135:11)
+    at pass (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:142:5)
+    at Router._dispatch (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:170:5)
+    at Object.router (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:33:10)
+    at next (D:\WebSites\dawned-node\webApp\node_modules\express\node_modules\connect\lib\proto.js:199:15)
+    at next (D:\WebSites\dawned-node\webApp\node_modules\express\node_modules\connect\lib\middleware\session.js:309:9)
+[90mPOST /admin/menus/menutype [31m500 [90m6ms[0m
+[90mGET /admin/menus [32m200 [90m9ms - 6.1kb[0m
+[90mGET /javascripts/libs/require.js [32m200 [90m4ms - 105.95kb[0m
+[90mGET /bootstrap/css/bootstrap.css [32m200 [90m6ms - 140.07kb[0m
+[90mGET /bootstrap/img/glyphicons-halflings.png [32m200 [90m7ms - 12.5kb[0m
+[90mGET /javascripts/admin/menu.js [32m200 [90m3ms - 2.31kb[0m
+[90mGET /javascripts/libs/knockout-2.3.0.js [32m200 [90m2ms - 41.73kb[0m
+[90mGET /bootstrap/js/bootstrap.min.js [32m200 [90m6ms - 26.27kb[0m
+[90mGET /javascripts/libs/knockout.mapping-latest.js [32m200 [90m2ms - 9.3kb[0m
+Error: Failed to lookup view "[object Object]"
+    at Function.app.render (D:\WebSites\dawned-node\webApp\node_modules\express\lib\application.js:493:17)
+    at ServerResponse.res.render (D:\WebSites\dawned-node\webApp\node_modules\express\lib\response.js:753:7)
+    at exports.menus.editMenuType (D:\WebSites\dawned-node\webApp\routes\admin.js:33:6)
+    at callbacks (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:161:37)
+    at param (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:135:11)
+    at pass (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:142:5)
+    at Router._dispatch (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:170:5)
+    at Object.router (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:33:10)
+    at next (D:\WebSites\dawned-node\webApp\node_modules\express\node_modules\connect\lib\proto.js:199:15)
+    at next (D:\WebSites\dawned-node\webApp\node_modules\express\node_modules\connect\lib\middleware\session.js:309:9)
+[90mPOST /admin/menus/menutype [31m500 [90m2ms[0m
+[90mGET /admin/menus [32m200 [90m7ms - 6.1kb[0m
+[90mGET /bootstrap/css/bootstrap.css [32m200 [90m6ms - 140.07kb[0m
+[90mGET /javascripts/libs/require.js [32m200 [90m2ms - 105.95kb[0m
+[90mGET /bootstrap/img/glyphicons-halflings.png [32m200 [90m20ms - 12.5kb[0m
+[90mGET /javascripts/admin/menu.js [32m200 [90m2ms - 2.31kb[0m
+[90mGET /javascripts/libs/knockout-2.3.0.js [32m200 [90m5ms - 41.73kb[0m
+[90mGET /bootstrap/js/bootstrap.min.js [32m200 [90m5ms - 26.27kb[0m
+[90mGET /javascripts/libs/knockout.mapping-latest.js [32m200 [90m3ms - 9.3kb[0m
+Error: Failed to lookup view "[object Object]"
+    at Function.app.render (D:\WebSites\dawned-node\webApp\node_modules\express\lib\application.js:493:17)
+    at ServerResponse.res.render (D:\WebSites\dawned-node\webApp\node_modules\express\lib\response.js:753:7)
+    at exports.menus.editMenuType (D:\WebSites\dawned-node\webApp\routes\admin.js:33:6)
+    at callbacks (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:161:37)
+    at param (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:135:11)
+    at pass (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:142:5)
+    at Router._dispatch (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:170:5)
+    at Object.router (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:33:10)
+    at next (D:\WebSites\dawned-node\webApp\node_modules\express\node_modules\connect\lib\proto.js:199:15)
+    at next (D:\WebSites\dawned-node\webApp\node_modules\express\node_modules\connect\lib\middleware\session.js:309:9)
+[90mPOST /admin/menus/menutype [31m500 [90m3ms[0m
+[90mGET /admin/menus [32m200 [90m4ms - 6.1kb[0m
+[90mGET /javascripts/libs/require.js [32m200 [90m3ms - 105.95kb[0m
+[90mGET /bootstrap/css/bootstrap.css [32m200 [90m5ms - 140.07kb[0m
+[90mGET /bootstrap/img/glyphicons-halflings.png [32m200 [90m24ms - 12.5kb[0m
+[90mGET /javascripts/admin/menu.js [32m200 [90m6ms - 2.31kb[0m
+[90mGET /javascripts/libs/knockout-2.3.0.js [32m200 [90m7ms - 41.73kb[0m
+[90mGET /bootstrap/js/bootstrap.min.js [32m200 [90m7ms - 26.27kb[0m
+[90mGET /javascripts/libs/knockout.mapping-latest.js [32m200 [90m4ms - 9.3kb[0m
+Error: Failed to lookup view "[object Object]"
+    at Function.app.render (D:\WebSites\dawned-node\webApp\node_modules\express\lib\application.js:493:17)
+    at ServerResponse.res.render (D:\WebSites\dawned-node\webApp\node_modules\express\lib\response.js:753:7)
+    at exports.menus.editMenuType (D:\WebSites\dawned-node\webApp\routes\admin.js:33:6)
+    at callbacks (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:161:37)
+    at param (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:135:11)
+    at pass (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:142:5)
+    at Router._dispatch (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:170:5)
+    at Object.router (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:33:10)
+    at next (D:\WebSites\dawned-node\webApp\node_modules\express\node_modules\connect\lib\proto.js:199:15)
+    at next (D:\WebSites\dawned-node\webApp\node_modules\express\node_modules\connect\lib\middleware\session.js:309:9)
+[90mPOST /admin/menus/menutype [31m500 [90m2ms[0m
+[90mGET /admin/menus [32m200 [90m3ms - 6.1kb[0m
+[90mGET /javascripts/libs/require.js [32m200 [90m3ms - 105.95kb[0m
+[90mGET /bootstrap/css/bootstrap.css [32m200 [90m8ms - 140.07kb[0m
+[90mGET /bootstrap/img/glyphicons-halflings.png [32m200 [90m10ms - 12.5kb[0m
+[90mGET /javascripts/admin/menu.js [32m200 [90m2ms - 2.31kb[0m
+[90mGET /javascripts/libs/knockout-2.3.0.js [32m200 [90m6ms - 41.73kb[0m
+[90mGET /bootstrap/js/bootstrap.min.js [32m200 [90m6ms - 26.27kb[0m
+[90mGET /javascripts/libs/knockout.mapping-latest.js [32m200 [90m6ms - 9.3kb[0m
+Error: Failed to lookup view "[object Object]"
+    at Function.app.render (D:\WebSites\dawned-node\webApp\node_modules\express\lib\application.js:493:17)
+    at ServerResponse.res.render (D:\WebSites\dawned-node\webApp\node_modules\express\lib\response.js:753:7)
+    at exports.menus.editMenuType (D:\WebSites\dawned-node\webApp\routes\admin.js:33:6)
+    at callbacks (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:161:37)
+    at param (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:135:11)
+    at pass (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:142:5)
+    at Router._dispatch (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:170:5)
+    at Object.router (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:33:10)
+    at next (D:\WebSites\dawned-node\webApp\node_modules\express\node_modules\connect\lib\proto.js:199:15)
+    at next (D:\WebSites\dawned-node\webApp\node_modules\express\node_modules\connect\lib\middleware\session.js:309:9)
+[90mPOST /admin/menus/menutype [31m500 [90m2ms[0m
+[90mGET /admin/menus [32m200 [90m4ms - 6.1kb[0m
+[90mGET /bootstrap/css/bootstrap.css [32m200 [90m3ms - 140.07kb[0m
+[90mGET /javascripts/libs/require.js [32m200 [90m4ms - 105.95kb[0m
+[90mGET /bootstrap/img/glyphicons-halflings.png [32m200 [90m3ms - 12.5kb[0m
+[90mGET /javascripts/admin/menu.js [32m200 [90m1ms - 2.31kb[0m
+[90mGET /javascripts/libs/knockout-2.3.0.js [32m200 [90m1ms - 41.73kb[0m
+[90mGET /javascripts/libs/knockout.mapping-latest.js [32m200 [90m8ms - 9.3kb[0m
+[90mGET /bootstrap/js/bootstrap.min.js [32m200 [90m8ms - 26.27kb[0m
+Error: Failed to lookup view "[object Object]"
+    at Function.app.render (D:\WebSites\dawned-node\webApp\node_modules\express\lib\application.js:493:17)
+    at ServerResponse.res.render (D:\WebSites\dawned-node\webApp\node_modules\express\lib\response.js:753:7)
+    at exports.menus.editMenuType (D:\WebSites\dawned-node\webApp\routes\admin.js:33:6)
+    at callbacks (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:161:37)
+    at param (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:135:11)
+    at pass (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:142:5)
+    at Router._dispatch (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:170:5)
+    at Object.router (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:33:10)
+    at next (D:\WebSites\dawned-node\webApp\node_modules\express\node_modules\connect\lib\proto.js:199:15)
+    at next (D:\WebSites\dawned-node\webApp\node_modules\express\node_modules\connect\lib\middleware\session.js:309:9)
+[90mPOST /admin/menus/menutype [31m500 [90m2ms[0m
+[90mGET /admin/menus [32m200 [90m4ms - 6.11kb[0m
+[90mGET /bootstrap/css/bootstrap.css [32m200 [90m2ms - 140.07kb[0m
+[90mGET /javascripts/libs/require.js [32m200 [90m3ms - 105.95kb[0m
+[90mGET /bootstrap/img/glyphicons-halflings.png [32m200 [90m48ms - 12.5kb[0m
+[90mGET /javascripts/admin/menu.js [32m200 [90m2ms - 2.31kb[0m
+[90mGET /javascripts/libs/knockout-2.3.0.js [32m200 [90m6ms - 41.73kb[0m
+[90mGET /bootstrap/js/bootstrap.min.js [32m200 [90m6ms - 26.27kb[0m
+[90mGET /javascripts/libs/knockout.mapping-latest.js [32m200 [90m6ms - 9.3kb[0m
+Error: Failed to lookup view "[object Object]"
+    at Function.app.render (D:\WebSites\dawned-node\webApp\node_modules\express\lib\application.js:493:17)
+    at ServerResponse.res.render (D:\WebSites\dawned-node\webApp\node_modules\express\lib\response.js:753:7)
+    at exports.menus.editMenuType (D:\WebSites\dawned-node\webApp\routes\admin.js:33:6)
+    at callbacks (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:161:37)
+    at param (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:135:11)
+    at pass (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:142:5)
+    at Router._dispatch (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:170:5)
+    at Object.router (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:33:10)
+    at next (D:\WebSites\dawned-node\webApp\node_modules\express\node_modules\connect\lib\proto.js:199:15)
+    at next (D:\WebSites\dawned-node\webApp\node_modules\express\node_modules\connect\lib\middleware\session.js:309:9)
+[90mPOST /admin/menus/menutype [31m500 [90m21ms[0m
+[90mGET /admin/menus [32m200 [90m3ms - 6.11kb[0m
+[90mGET /javascripts/libs/require.js [32m200 [90m4ms - 105.95kb[0m
+[90mGET /bootstrap/css/bootstrap.css [32m200 [90m7ms - 140.07kb[0m
+[90mGET /bootstrap/img/glyphicons-halflings.png [32m200 [90m40ms - 12.5kb[0m
+[90mGET /javascripts/admin/menu.js [32m200 [90m3ms - 2.31kb[0m
+[90mGET /javascripts/libs/knockout-2.3.0.js [32m200 [90m5ms - 41.73kb[0m
+[90mGET /bootstrap/js/bootstrap.min.js [32m200 [90m5ms - 26.27kb[0m
+[90mGET /javascripts/libs/knockout.mapping-latest.js [32m200 [90m5ms - 9.3kb[0m
+Error: Failed to lookup view "[object Object]"
+    at Function.app.render (D:\WebSites\dawned-node\webApp\node_modules\express\lib\application.js:493:17)
+    at ServerResponse.res.render (D:\WebSites\dawned-node\webApp\node_modules\express\lib\response.js:753:7)
+    at exports.menus.editMenuType (D:\WebSites\dawned-node\webApp\routes\admin.js:33:6)
+    at callbacks (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:161:37)
+    at param (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:135:11)
+    at pass (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:142:5)
+    at Router._dispatch (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:170:5)
+    at Object.router (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:33:10)
+    at next (D:\WebSites\dawned-node\webApp\node_modules\express\node_modules\connect\lib\proto.js:199:15)
+    at next (D:\WebSites\dawned-node\webApp\node_modules\express\node_modules\connect\lib\middleware\session.js:309:9)
+[90mPOST /admin/menus/menutype [31m500 [90m8ms[0m
+[90mGET /admin/menus [32m200 [90m3ms - 6.11kb[0m
+[90mGET /bootstrap/css/bootstrap.css [32m200 [90m2ms - 140.07kb[0m
+[90mGET /javascripts/libs/require.js [32m200 [90m2ms - 105.95kb[0m
+[90mGET /bootstrap/img/glyphicons-halflings.png [32m200 [90m7ms - 12.5kb[0m
+[90mGET /javascripts/admin/menu.js [32m200 [90m21ms - 2.31kb[0m
+[90mGET /javascripts/libs/knockout-2.3.0.js [32m200 [90m2ms - 41.73kb[0m
+[90mGET /javascripts/libs/knockout.mapping-latest.js [32m200 [90m3ms - 9.3kb[0m
+[90mGET /bootstrap/js/bootstrap.min.js [32m200 [90m3ms - 26.27kb[0m
+[90mGET /admin/menus [32m200 [90m4ms - 6.11kb[0m
+[90mGET /bootstrap/css/bootstrap.css [32m200 [90m2ms - 140.07kb[0m
+[90mGET /javascripts/libs/require.js [32m200 [90m3ms - 105.95kb[0m
+[90mGET /bootstrap/img/glyphicons-halflings.png [32m200 [90m2ms - 12.5kb[0m
+[90mGET /javascripts/admin/menu.js [32m200 [90m2ms - 2.31kb[0m
+[90mGET /javascripts/libs/knockout-2.3.0.js [32m200 [90m3ms - 41.73kb[0m
+[90mGET /javascripts/libs/knockout.mapping-latest.js [32m200 [90m2ms - 9.3kb[0m
+[90mGET /bootstrap/js/bootstrap.min.js [32m200 [90m6ms - 26.27kb[0m
+Error: Failed to lookup view "[object Object]"
+    at Function.app.render (D:\WebSites\dawned-node\webApp\node_modules\express\lib\application.js:493:17)
+    at ServerResponse.res.render (D:\WebSites\dawned-node\webApp\node_modules\express\lib\response.js:753:7)
+    at exports.menus.editMenuType (D:\WebSites\dawned-node\webApp\routes\admin.js:33:6)
+    at callbacks (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:161:37)
+    at param (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:135:11)
+    at pass (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:142:5)
+    at Router._dispatch (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:170:5)
+    at Object.router (D:\WebSites\dawned-node\webApp\node_modules\express\lib\router\index.js:33:10)
+    at next (D:\WebSites\dawned-node\webApp\node_modules\express\node_modules\connect\lib\proto.js:199:15)
+    at next (D:\WebSites\dawned-node\webApp\node_modules\express\node_modules\connect\lib\middleware\session.js:309:9)
+[90mPOST /admin/menus/menutype [31m500 [90m2ms[0m
+[90mGET /admin/menus [36m304 [90m4ms[0m
+[90mGET /bootstrap/css/bootstrap.css [36m304 [90m2ms[0m
+[90mGET /javascripts/libs/require.js [36m304 [90m19ms[0m
+[90mGET /bootstrap/img/glyphicons-halflings.png [36m304 [90m0ms[0m
+[90mGET /javascripts/admin/menu.js [36m304 [90m3ms[0m
+[90mGET /javascripts/libs/knockout-2.3.0.js [36m304 [90m1ms[0m
+[90mGET /javascripts/libs/knockout.mapping-latest.js [36m304 [90m1ms[0m
+[90mGET /bootstrap/js/bootstrap.min.js [36m304 [90m2ms[0m

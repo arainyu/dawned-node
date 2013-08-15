@@ -1,0 +1,24 @@
+<% include ../header %>
+    <div id="edit_role">
+    	<h1><%= title %></h1>
+        <form id="login_form" class="single-form">
+    	<p>
+    		<label>角色名称：</label>
+    		<input type="text" id="loginName" class="input-txt" />
+    	</p>
+    	<p>
+    		<label>授权菜单：</label>
+    		<span class="checkbox-list">
+    			<input type="checkbox" name="menus" id="menu1" class="input-checkbox" /><label for="menu1">菜单1</label>
+    			<input type="checkbox" name="menus" id="menu2" class="input-checkbox" /><label for="menu2">菜单2</label>
+    			<input type="checkbox" name="menus" id="menu3" class="input-checkbox" /><label for="menu3">菜单3</label>
+    			<input type="checkbox" name="menus" id="menu4" class="input-checkbox" /><label for="menu4">菜单4</label>
+    			<input type="checkbox" name="menus" id="menu5" class="input-checkbox" /><label for="menu5">菜单5</label>
+    		</span>
+    	</p>
+    	<p>
+    		<input type="submit" value="编辑" class="input-btn" />
+    	</p>
+        </form>
+    </div>
+<% include ../footer %>

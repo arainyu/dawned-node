@@ -1,0 +1,16 @@
+body {
+  padding: 50px;
+  font: 14px Microsoft Yahei, Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00B7FF;
+}
+p {
+  padding: 5px;
+}
+label {
+  width: 100px;
+  display: inline-block;
+  text-align: right;
+  padding: 5px;
+}

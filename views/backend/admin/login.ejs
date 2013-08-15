@@ -1,0 +1,22 @@
+<% include ../header %>
+    <div id="login">
+    	<h1><%= title %></h1>
+        <form id="login_form" class="single-form">
+    	<p>
+    		<label>用户名：</label>
+    		<input type="text" id="loginName" class="input-txt" />
+    	</p>
+    	<p>
+    		<label>密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
+    		<input type="password" id="password" class="input-txt" />
+    	</p>
+    	<p>
+    		<input type="submit" value="登录" class="input-btn" />
+    	</p>
+    	<p>
+    		<a href="regist" class="link-btn">注册新用户</a>
+    		<a href="forgetpwd" class="link-btn">忘记密码</a> 
+    	</p>
+        </form>
+    </div>
+<% include ../footer %>

@@ -1,0 +1,37 @@
+<% include ../header %>
+    <div id="login">
+    	<h1><%= title %></h1>
+        <form id="login_form" class="form-single">
+    	<p>
+    		<label>用户名：</label>
+    		<input type="text" id="loginName" class="input-txt" />
+    	</p>
+    	<p>
+    		<label>密码：</label>
+    		<input type="password" id="password" class="input-txt" />
+    	</p>
+    	<p>
+    		<label>确认密码：</label>
+    		<input type="password" id="password2" class="input-txt" />
+    	</p>
+    	<p>
+    		<label>真实姓名：</label>
+    		<input type="text" id="name" class="input-txt" />
+    	</p>
+    	<p>
+    		<label>E-Mail：</label>
+    		<input type="text" id="email" class="input-txt" />
+    	</p>
+    	<p>
+    		<label>角色：</label>
+    		<select id="role" type="select-single"></select>
+    	</p>
+    	<p>
+    		<input type="submit" value="注册" class="input-btn" />
+    	</p>
+    	<p>
+    		<a href="login" class="link-btn">已注册用户通道</a>
+    	</p>
+        </form>
+    </div>
+<% include ../footer %>
