@@ -22,5 +22,5 @@ exports.message = {
 exports.returnCode = {
 	OK: 1,
 	ERROR: 0,
-	DB_ERROE: -1
+	DB_ERROER: -1
 };

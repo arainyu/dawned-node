@@ -41,6 +41,9 @@ app.get('/admin/forgetpwd', admin.forgetpwd);
 app.get('/admin/roles', admin.roles);
 app.get('/admin/menus', admin.menus);
 app.post('/admin/menus/menutype', admin.menus.editMenuType);
+app.post('/admin/menus/delete', admin.menus.deleteMenuType);
+app.post('/admin/menus/editMenu', admin.menus.editMenu);
+app.post('/admin/menus/deleteMenu', admin.menus.deleteMenu);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
