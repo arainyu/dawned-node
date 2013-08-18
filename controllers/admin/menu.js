@@ -25,7 +25,7 @@ exports.newAndSaveMenuType = function(data, callback) {
 	};
 
 	if (data._id === "") {
-		var menuType = new Menu(data);
+		var menuType = new Menu(menu);
 		menuType.save(callback);
 	} else {
 		Menu.update({

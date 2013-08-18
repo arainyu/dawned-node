@@ -5,6 +5,7 @@ var returnCode = require('../configs').returnCode;
 var getResJson = function(err, docs) {
 	if (err) {
 		var msg = err.message || err;
+		console.log(err.message);
 		return utils.returnValue(returnCode.DB_ERROR, null, "数据库错误，操作失败！")
 	} else {
 		return utils.returnValue(returnCode.OK, (docs || null), "操作成功!");

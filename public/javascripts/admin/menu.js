@@ -79,7 +79,7 @@ define(['jquery', 'knockout', 'knockout.map', 'config', 'utils', 'bootstrap'], f
 				return;
 			}
 
-			utils.ajax.post('/admin/menus/menutype', ko.toJS(menuType), {
+			utils.ajax.post('/admin/menus/editMenuType', ko.toJS(menuType), {
 				done: function(result) {
 					if (config.returnCode.OK === result.code) {
 
@@ -99,7 +99,7 @@ define(['jquery', 'knockout', 'knockout.map', 'config', 'utils', 'bootstrap'], f
 			
 			if (!menuType._id) return;
 
-			utils.ajax.post('/admin/menus/delete', {
+			utils.ajax.post('/admin/menus/deleteMenuType', {
 				id: menuType._id
 			}, {
 				done: function(result) {
