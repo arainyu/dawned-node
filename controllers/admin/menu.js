@@ -18,13 +18,13 @@ exports.getMenus = function(callback) {
 	Menu.find().lean().exec(callback);
 };
 
-exports.newAndSaveMenuType = function(data, callback) {
+exports.newAndSaveMenuType = function(id, data, callback) {
 	var menu = {
 		name: data.name,
 		orderId: data.orderId || 0
 	};
 
-	if (data._id === "") {
+	if (id === null) {
 		var menuType = new Menu(menu);
 		menuType.save(callback);
 	} else {
@@ -40,10 +40,10 @@ exports.delete = function(id, callback) {
 	}, callback);
 };
 
-exports.newAndSaveMenu = function(data, callback) {
+exports.newAndSaveMenu = function(id, data, callback) {
 	Menu.findById(data.type, function(err, doc) {
 		if (err) {
-			returnMenus.call(null, err, callback);
+			callback(err, null);
 			return;
 		}
 
@@ -55,30 +55,28 @@ exports.newAndSaveMenu = function(data, callback) {
 			type: data.type
 		};
 
-		if (data._id == "") {
+		if (id === null) {
 			doc.menus.push(menu);
-			doc.save(function(err) {
-				returnMenus.call(null, err, callback);
-			});
+			menu._id = doc.menus[0]._id;
 		} else {
 			doc.menus.id(data._id).set(menu);
-			doc.save(function(err) {
-				returnMenus.call(null, err, callback);
-			});
+			menu._id = data._id;
 		}
+
+		doc.save(function(err){
+			callback(err, menu);
+		});
 	});
 };
 
 exports.deleteMenu = function(type, id, callback) {
 	Menu.findById(type, function(err, doc) {
 		if (err) {
-			returnMenus.call(null, err, callback);
+			callback(err, null);
 			return;
 		}
 
 		doc.menus.id(id).remove();
-		doc.save(function(err) {
-			returnMenus.call(null, err, callback);
-		});
+		doc.save(callback);
 	});
 };

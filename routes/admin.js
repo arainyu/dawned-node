@@ -1,16 +1,8 @@
 var Menu = require('../controllers/admin/menu');
+var Role = require('../controllers/admin/role');
 var utils = require('../common/utils');
+var rest = require('../common/rest');
 var returnCode = require('../configs').returnCode;
-
-var getResJson = function(err, docs) {
-	if (err) {
-		var msg = err.message || err;
-		console.log(err.message);
-		return utils.returnValue(returnCode.DB_ERROR, null, "数据库错误，操作失败！")
-	} else {
-		return utils.returnValue(returnCode.OK, (docs || null), "操作成功!");
-	}
-};
 
 exports.index = function(req, res) {
 	res.render('backend/admin/index', {
@@ -37,14 +29,21 @@ exports.forgetpwd = function(req, res) {
 };
 
 exports.roles = function(req, res) {
-	res.render('backend/admin/roles', {
-		title: '角色管理'
+	Role.getRolesAndMenus(function(err, data){
+		if (err) {
+			res.render('backend/admin/roles', {
+				title: '加载错误',
+				menuData: null
+			});
+		}else{
+			res.render('backend/admin/roles', {
+				title: '角色管理',
+				roles: data.roles,
+				menus: data.menus
+			});
+		}
 	});
 };
-
-/*
-	menus routes
-*/
 exports.menus = function(req, res) {
 	Menu.getMenus(function(err, docs) {
 		if (err) {
@@ -60,45 +59,80 @@ exports.menus = function(req, res) {
 	});
 };
 
-exports.menus.editMenuType = function(req, res) {
-	//req.accepts('application/json');
 
-	Menu.newAndSaveMenuType(req.body, function(err) {
-		res.json(getResJson(err));
+/* api */
+
+
+exports.api = {
+	menu: utils.extend({}, rest.API),
+	menutype: utils.extend({}, rest.API)
+};
+
+
+exports.api.menutype.post = function(req, res) {
+	var result = new rest.ApiResultModel(res, rest.method.POST);
+
+	Menu.newAndSaveMenuType(null, req.body, function(err, data) {
+		result.responseAPI.call(result, err, data);
 	});
 };
 
-exports.menus.deleteMenuType = function(req, res) {
-	//req.accepts('application/json');
+exports.api.menutype.put = function(req, res) {
 
-	var id = req.body.id || "";
+	var result = new rest.ApiResultModel(res, rest.method.PUT);
+	var acceptable = result.checkAcceptable(!req.params.id);
 
-	if (id == "") {
-		res.json(getResJson("操作失误，不能删除该项。"));
-		return;
+	if (acceptable) {
+		Menu.newAndSaveMenuType(req.params.id, req.body, function(err, data) {
+			result.responseAPI.call(result, err, data);
+		});
 	}
-
-	Menu.delete(id, function(err) {
-		res.json(getResJson(err));
-	});
 };
 
-exports.menus.deleteMenu = function(req, res) {
-	var id = req.body.id || "";
-	var type = req.body.type || "";
+exports.api.menutype.delete = function(req, res) {
 
-	if (id == "" || type == "") {
-		res.json(getResJson("操作失误，不能删除该项。"));
-		return;
+	var result = new rest.ApiResultModel(res, rest.method.DELETE);
+	var id = req.params.id;
+	var acceptable = result.checkAcceptable(!id);
+
+	if (acceptable) {
+		Menu.delete(id, function(err, data) {
+			result.responseAPI.call(result, err, data);
+		});
 	}
+};
 
-	Menu.deleteMenu(type, id, function(err, docs) {
-		res.json(getResJson(err));
+exports.api.menu.post = function(req, res) {
+
+	var result = new rest.ApiResultModel(res, rest.method.POST);
+
+	Menu.newAndSaveMenu(null, req.body, function(err, data) {
+		result.responseAPI.call(result, err, data);
 	});
 };
 
-exports.menus.editMenu = function(req, res) {
-	Menu.newAndSaveMenu(req.body, function(err) {
-		res.json(getResJson(err));
-	});
-}
+exports.api.menu.put = function(req, res) {
+
+	var result = new rest.ApiResultModel(res, rest.method.PUT);
+	var acceptable = result.checkAcceptable(!req.params.id);
+
+	if (acceptable) {
+		Menu.newAndSaveMenu(req.params.id, req.body, function(err, data) {
+			result.responseAPI.call(result, err, data);
+		});
+	}
+};
+
+exports.api.menu.delete = function(req, res) {
+
+	var result = new rest.ApiResultModel(res, rest.method.DELETE);
+	var type = req.body.type || false;
+	var id = req.params.id;
+	var acceptable = result.checkAcceptable(!id || !type);
+
+	if (acceptable) {
+		Menu.deleteMenu(type, id, function(err, data) {
+			result.responseAPI.call(result, err, data);
+		});
+	}
+};

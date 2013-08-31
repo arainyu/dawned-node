@@ -4,12 +4,15 @@ define(['jquery'], function($) {
 		var failCallback = callbacks.fail || function() {};
 		var successCallback = callbacks.done;
 
-		$.ajax({
+		var jqXHR = $.ajax({
 			url: url,
 			type: type,
 			dataType: 'json',
 			data: data
-		}).done(successCallback).fail(failCallback).always(alwaysCallback);
+		});
+		jqXHR.done(successCallback);
+		jqXHR.fail(failCallback);
+		jqXHR.always(alwaysCallback);
 	};
 
 	return {
@@ -20,6 +23,12 @@ define(['jquery'], function($) {
 			},
 			get: function(url, data, callbacks) {
 				_ajax(url, 'GET', data, callbacks);
+			},
+			delete: function(url, data, callbacks) {
+				_ajax(url, 'DELETE', data, callbacks);
+			},
+			put: function(url, data, callbacks) {
+				_ajax(url, 'PUT', data, callbacks);
 			}
 		}
 	};

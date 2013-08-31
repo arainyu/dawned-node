@@ -59,7 +59,7 @@ define(['jquery', 'knockout', 'knockout.map', 'config', 'utils', 'bootstrap'], f
 
 		self.addMenuType = function() {
 			self.list.push({
-				_id: '',
+				_id: ko.observable(''),
 				name: '',
 				orderId: 0,
 				showMenus: ko.observable(false),
@@ -74,42 +74,50 @@ define(['jquery', 'knockout', 'knockout.map', 'config', 'utils', 'bootstrap'], f
 
 		self.saveMenuType = function(menuType) {
 
+			var data = ko.toJS(menuType);
+
 			if (menuType.name == "") {
 				showMessage("您必须输入名称");
 				return;
 			}
 
-			utils.ajax.post('/admin/menus/editMenuType', ko.toJS(menuType), {
-				done: function(result) {
-					if (config.returnCode.OK === result.code) {
-
-						showMessage(result.message, msgType.SUCCESS);
+			if (data._id === "") {
+				utils.ajax.post('/admin/api/menutype', data, {
+					done: function(returnData) {
+						showMessage("成功新增加了一条记录", msgType.SUCCESS);
 						menuType.editable(false);
-
-					} else {
-						showMessage(result.message, msgType.ERROR);
+						menuType._id(returnData.data._id);
+					},
+					fail: function() {
+						showMessage("增加失败", msgType.ERROR);
 					}
-				}
-			});
+				});
+			} else {
+				utils.ajax.put('/admin/api/menutype/' + data._id, data, {
+					done: function(data) {
+						showMessage("成功更新了一条记录", msgType.SUCCESS);
+						menuType.editable(false);
+					},
+					fail: function() {
+						showMessage("更新失败", msgType.ERROR);
+					}
+				});
+			}
 		};
 
 		self.removeMenuType = function(menuType) {
 
-			self.list.remove(menuType);
-			
-			if (!menuType._id) return;
+			var id = (typeof menuType._id !== 'function')?menuType._id:menuType._id();
 
-			utils.ajax.post('/admin/menus/deleteMenuType', {
-				id: menuType._id
-			}, {
-				done: function(result) {
-					if (config.returnCode.OK === result.code) {
+			if (!id) return;
 
-						showMessage(result.message, msgType.SUCCESS);
-
-					} else {
-						showMessage(result.message, msgType.ERROR);
-					}
+			utils.ajax.delete('/admin/api/menutype/' + id, null, {
+				done: function(data) {
+					showMessage("成功删除了一条记录", msgType.SUCCESS);
+					self.list.remove(menuType);
+				},
+				fail: function() {
+					showMessage("删除失败", msgType.ERROR);
 				}
 			});
 		};
@@ -117,7 +125,7 @@ define(['jquery', 'knockout', 'knockout.map', 'config', 'utils', 'bootstrap'], f
 		self.addMenu = function(menuType) {
 			menuType.showMenus(true);
 			menuType.menus.push({
-				_id: '',
+				_id: ko.observable(''),
 				name: '',
 				type: menuType._id,
 				url: '',
@@ -132,40 +140,54 @@ define(['jquery', 'knockout', 'knockout.map', 'config', 'utils', 'bootstrap'], f
 		};
 
 		self.saveMenu = function(menu) {
-			utils.ajax.post('/admin/menus/editMenu', ko.toJS(menu), {
-				done: function(result) {
-					if (config.returnCode.OK === result.code) {
+			var data = ko.toJS(menu);
 
-						showMessage(result.message, msgType.SUCCESS);
+			if (data._id === "") {
+				utils.ajax.post('/admin/api/menu', data, {
+					done: function(returnData) {
+						showMessage("成功新增加了一条记录", msgType.SUCCESS);
 						menu.editable(false);
-
-					} else {
-						showMessage(result.message, msgType.ERROR);
+						menu._id(returnData.data._id);
+					},
+					fail: function() {
+						showMessage("增加失败", msgType.ERROR);
 					}
-				}
-			});
+				});
+			} else {
+				utils.ajax.put('/admin/api/menu/' + data._id, data, {
+					done: function(returnData) {
+						showMessage("成功更新了一条记录", msgType.SUCCESS);
+						menu.editable(false);
+					},
+					fail: function() {
+						showMessage("更新失败", msgType.ERROR);
+					}
+				});
+			}
 		};
 
 		self.removeMenu = function(menu) {
-			$.each(self.list(), function() {
-				this.menus.remove(menu);
-			});
 
-			if (!menu._id) {
+			var id = (typeof menu._id !== 'function')?menu._id:menu._id();
+
+			if (!id) {
 				return;
 			}
 
-			utils.ajax.post('/admin/menus/deleteMenu', {
-				id: menu._id,
+
+			utils.ajax.delete('/admin/api/menutype/' + id, {
 				type: menu.type
 			}, {
-				done: function(result) {
-					if (config.returnCode.OK === result.code) {
-						showMessage(result.message, msgType.SUCCESS);
+				done: function(data) {
 
-					} else {
-						showMessage(result.message, msgType.ERROR);
-					}
+					$.each(self.list(), function() {
+						this.menus.remove(menu);
+					});
+
+					showMessage("成功删除了一条记录", msgType.SUCCESS);
+				},
+				fail: function() {
+					showMessage("删除失败", msgType.ERROR);
 				}
 			});
 		};
@@ -174,237 +196,4 @@ define(['jquery', 'knockout', 'knockout.map', 'config', 'utils', 'bootstrap'], f
 	$(document).ready(function() {
 		ko.applyBindings(new ViewModel(menuData), document.getElementById('menu'));
 	});
-
-	/*
-
-	var viewModel = {
-		list: ko.observableArray([]),
-		currentMenuTypeViewModel: {
-			id: ko.observable(''),
-			name: ko.observable(''),
-			orderId: ko.observable(0),
-			menus: ko.observableArray([])
-		},
-		currentMenuViewModel: {
-			id: ko.observable(''),
-			name: ko.observable(''),
-			type: ko.observable(''),
-			url: ko.observable(''),
-			params: ko.observable(''),
-			orderId: ko.observable(0)
-		},
-		message: {
-			showInEditType: ko.observable(false),
-			showInEditMenu: ko.observable(false),
-			showInDefault: ko.observable(false),
-			msg: ko.observable(''),
-			type: ko.observable(config.alertType.DEFAULT)
-		},
-		setMessage: function(messageObj) {
-			var message = messageObj || {};
-						viewModel.message.msg(message.msg || '');
-
-			viewModel.message.showInEditType(message.showInEditType || false);
-			viewModel.message.showInEditMenu(message.showInEditMenu || false);
-			viewModel.message.showInDefault(message.showInDefault || false);
-		},
-		resetMessage: function() {
-			viewModel.setMessage();
-		}
-	};
-	viewModel.menuTypeEvent = {
-		add: function() {
-			viewModel.menuTypeEvent.reset();
-			modal.openMenuTypeEditPanel();
-		},
-		edit: function(data, e) {
-			modal.openMenuTypeEditPanel();
-			viewModel.menuTypeEvent.set(data);
-		},
-		delete: function(data, e) {
-			utils.ajax.post('/admin/menus/delete', {
-				id: data._id
-			}, {
-				done: function(result) {
-					var message = {
-						msg: result.message,
-						showInDefault: true
-					};
-					if (config.returnCode.OK === result.code) {
-
-						message.type = config.alertType.SUCCESS;
-						viewModel.dataOperations.bind(result.data);
-						viewModel.setMessage(message);
-
-						setTimeout(function() {
-							viewModel.resetMessage();
-						}, 500);
-
-					} else {
-						message.type = config.alertType.ERROR;
-						viewModel.setMessage(message);
-					}
-				}
-			});
-		},
-		set: function(data) {
-			var cv = viewModel.currentMenuTypeViewModel,
-				rcv = data || {};
-			cv.name(rcv.name || '');
-			cv.orderId(rcv.orderId || 0);
-			cv.menus(rcv.menus || []);
-			cv.id(rcv._id || '');
-		},
-		reset: function() {
-			viewModel.menuTypeEvent.set(),
-			viewModel.resetMessage();
-		},
-		toggle: function(data, e) {
-			data.showMenus(!data.showMenus());
-		},
-		save: function(data, e) {
-			viewModel.resetMessage();
-
-			var cv = viewModel.currentMenuTypeViewModel,
-				message = {
-					showInEditType: true,
-					msg: "您必须输入名称"
-				};
-
-			viewModel.message.showInEditType(true);
-
-			if ($.trim(cv.name()) == "") {
-				viewModel.setMessage(message);
-				return;
-			}
-
-			utils.ajax.post('/admin/menus/menutype', ko.toJS(cv), {
-				done: function(result) {
-					message.msg = result.message;
-					if (config.returnCode.OK === result.code) {
-						message.type = config.alertType.SUCCESS
-						viewModel.setMessage(message);
-
-						setTimeout(function() {
-							viewModel.menuTypeEvent.reset();
-							modal.closeMenuTypeEditPanel();
-							viewModel.dataOperations.bind(result.data);
-						}, 500);
-
-					} else {
-						message.type = config.alertType.ERROR
-						viewModel.setMessage(message);
-					}
-				}
-			});
-		}
-	};
-	viewModel.menuEvent = {
-		add: function(data, e) {
-			viewModel.menuEvent.reset();
-
-			if (data._id) {
-				viewModel.currentMenuViewModel.type(data._id);
-			}
-
-			modal.openMenuEditPanel();
-		},
-		edit: function(data, e) {
-			modal.openMenuEditPanel();
-			viewModel.menuEvent.set(data);
-		},
-		delete: function(data, e) {
-			utils.ajax.post('/admin/menus/deleteMenu', {
-				id: data._id,
-				type: data.type
-			}, {
-				done: function(result) {
-					var message = {
-						msg: result.message,
-						showInDefault: true
-					};
-					if (config.returnCode.OK === result.code) {
-
-						message.type = config.alertType.SUCCESS;
-						viewModel.dataOperations.bind(result.data);
-						viewModel.setMessage(message);
-
-						setTimeout(function() {
-							viewModel.resetMessage();
-						}, 500);
-
-					} else {
-						message.type = config.alertType.ERROR;
-						viewModel.setMessage(message);
-					}
-				}
-			});
-		},
-		set: function(data) {
-			var cv = viewModel.currentMenuViewModel,
-				rcv = data || {};
-			cv.id(rcv._id || '');
-			cv.name(rcv.name || '');
-			cv.type(rcv.type || '');
-			cv.url(rcv.url || '');
-			cv.params(rcv.params || '');
-			cv.orderId(rcv.orderId || 0);
-		},
-		reset: function() {
-			viewModel.menuEvent.set();
-			viewModel.resetMessage();
-		},
-		save: function(data, e) {
-			viewModel.resetMessage();
-
-			var cv = viewModel.currentMenuViewModel,
-				message = {
-					showInEditType: true,
-					msg: "您必须输入名称"
-				};
-
-			if ($.trim(cv.name()) == "") {
-				viewModel.setMessage(message);
-				return;
-			}
-
-			utils.ajax.post('/admin/menus/editMenu', ko.toJS(cv), {
-				done: function(result) {
-					message.msg = result.message;
-					if (config.returnCode.OK === result.code) {
-						message.type = config.alertType.SUCCESS
-						viewModel.setMessage(message);
-
-						setTimeout(function() {
-							viewModel.menuEvent.reset();
-							modal.closeMenuEditPanel();
-							viewModel.dataOperations.bind(result.data);
-						}, 500);
-
-					} else {
-						message.type = config.alertType.ERROR
-						viewModel.setMessage(message);
-					}
-				}
-			});
-		}
-	};
-
-	viewModel.dataOperations = {
-		bind: function(data) {
-			viewModel.list([]);
-			for (var i = 0, len = data.length; i < len; i++) {
-				var menu = $.extend({}, data[i]);
-				menu.showMenus = ko.observable(false);
-
-				viewModel.list.push(menu);
-			}
-		}
-	};
-
-	$(document).ready(function() {
-		viewModel.dataOperations.bind(menuData);
-
-		ko.applyBindings(viewModel, document.getElementById('menu'));
-	});*/
 });
