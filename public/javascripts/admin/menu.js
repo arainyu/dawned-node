@@ -1,20 +1,5 @@
 define(['jquery', 'knockout', 'knockout.map', 'config', 'utils', 'bootstrap'], function($, ko, koMap, config, utils) {
 
-	var modal = {
-		openMenuEditPanel: function() {
-			$('#edit_menu').modal('show');
-		},
-		openMenuTypeEditPanel: function() {
-			$('#edit_menu_type').modal('show');
-		},
-		closeMenuEditPanel: function() {
-			$('#edit_menu').modal('hide');
-		},
-		closeMenuTypeEditPanel: function() {
-			$('#edit_menu_type').modal('hide');
-		}
-	};
-
 	var ViewModel = function(data) {
 		var self = this;
 
@@ -175,7 +160,7 @@ define(['jquery', 'knockout', 'knockout.map', 'config', 'utils', 'bootstrap'], f
 			}
 
 
-			utils.ajax.delete('/admin/api/menutype/' + id, {
+			utils.ajax.delete('/admin/api/menu/' + id, {
 				type: menu.type
 			}, {
 				done: function(data) {

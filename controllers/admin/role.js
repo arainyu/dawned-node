@@ -5,7 +5,7 @@ exports.getRoles = function(callback) {
 	Role.find().lean().exec(callback);
 };
 
-exports.getRolesAndMenu = function(callback){
+exports.getRolesAndMenus = function(callback){
 	Role.find().lean().exec(function(err,roles){
 		if(err){
 			callback(err);

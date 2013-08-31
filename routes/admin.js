@@ -33,7 +33,8 @@ exports.roles = function(req, res) {
 		if (err) {
 			res.render('backend/admin/roles', {
 				title: '加载错误',
-				menuData: null
+				roles: null,
+				menus: null
 			});
 		}else{
 			res.render('backend/admin/roles', {
@@ -65,7 +66,41 @@ exports.menus = function(req, res) {
 
 exports.api = {
 	menu: utils.extend({}, rest.API),
-	menutype: utils.extend({}, rest.API)
+	menutype: utils.extend({}, rest.API),
+	role: utils.extend({}, rest.API)
+};
+
+exports.api.role.post = function(req, res) {
+	var result = new rest.ApiResultModel(res, rest.method.POST);
+
+	Role.newAndSave(null, req.body, function(err, data) {
+		result.responseAPI.call(result, err, data);
+	});
+};
+
+exports.api.role.put = function(req, res) {
+
+	var result = new rest.ApiResultModel(res, rest.method.PUT);
+	var acceptable = result.checkAcceptable(!req.params.id);
+
+	if (acceptable) {
+		Role.newAndSave(req.params.id, req.body, function(err, data) {
+			result.responseAPI.call(result, err, data);
+		});
+	}
+};
+
+exports.api.role.delete = function(req, res) {
+
+	var result = new rest.ApiResultModel(res, rest.method.DELETE);
+	var id = req.params.id;
+	var acceptable = result.checkAcceptable(!id);
+
+	if (acceptable) {
+		Role.delete(id, function(err, data) {
+			result.responseAPI.call(result, err, data);
+		});
+	}
 };
 
 
