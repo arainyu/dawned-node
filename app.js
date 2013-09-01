@@ -48,8 +48,8 @@ app.configure('development', function() {
 });
 
 app.get('/', routes.index);
-app.get('/users', user.list);
 app.get('/admin', admin.index);
+app.get('/admin/users', admin.users);
 app.get('/admin/login', admin.login);
 app.get('/admin/regist', admin.regist);
 app.get('/admin/forgetpwd', admin.forgetpwd);

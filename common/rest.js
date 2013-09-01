@@ -13,8 +13,8 @@ var responseStatus = {
 			data: data || ""
 		});
 	},
-	updated: function(res, data) {
-		res.json(204, {
+	updated: function(res, data, statusCode) {
+		res.json(statusCode || 204, {
 			statusCode: 204,
 			statusText: 'Updated',
 			data: data || ""
@@ -87,7 +87,7 @@ ApiResultModel.prototype.checkAcceptable = function(notAcceptableCondition) {
 	return true;
 };
 
-ApiResultModel.prototype.responseAPI = function(err, data) {
+ApiResultModel.prototype.responseAPI = function(err, data, statusCode) {
 	if (err) {
 		responseStatus.internalServerError(this.res);
 		return;
@@ -98,7 +98,7 @@ ApiResultModel.prototype.responseAPI = function(err, data) {
 			responseStatus.created(this.res, data);
 			break;
 		case method.PUT:
-			responseStatus.updated(this.res, data);
+			responseStatus.updated(this.res, data, statusCode);
 			break;
 		case method.DELETE:
 			responseStatus.ok(this.res, data);

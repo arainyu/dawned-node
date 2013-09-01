@@ -55,6 +55,17 @@ define(['jquery', 'knockout', 'knockout.map', 'config', 'utils', 'bootstrap'], f
 			};
 		}));
 
+		self.updateItem = function(item){
+			var roles = self.roles();
+			for(var i=0,len = roles.length; i<len; i++){
+				if(roles[i]._id == item._id){
+					roles[i] = item;
+					break;
+				}
+			}
+			self.roles(roles);
+		};
+
 		self.addRole = function() {
 			modal.openEditPanel();
 			self.currentRoleViewModel._id('');
@@ -64,9 +75,15 @@ define(['jquery', 'knockout', 'knockout.map', 'config', 'utils', 'bootstrap'], f
 
 		self.editRole = function(data, e) {
 			modal.openEditPanel();
+			var menuIdArr = [];
+
+			for(var index in data.menus){
+				menuIdArr.push(data.menus[index]._id);
+			}
+
 			self.currentRoleViewModel._id(data._id);
 			self.currentRoleViewModel.name(data.name);
-			self.currentRoleViewModel.menus(data.menus);
+			self.currentRoleViewModel.menus(menuIdArr);
 		};
 
 		self.removeRole = function(role) {
@@ -107,8 +124,9 @@ define(['jquery', 'knockout', 'knockout.map', 'config', 'utils', 'bootstrap'], f
 				});
 			} else {
 				utils.ajax.put('/admin/api/role/' + data._id, data, {
-					done: function(data) {
+					done: function(returnData) {
 						showMessage("成功更新了一条记录", msgType.SUCCESS, true);
+						self.updateItem(returnData.data);
 					},
 					fail: function() {
 						showMessage("更新失败", msgType.ERROR, true);

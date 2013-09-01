@@ -5,7 +5,7 @@
     <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
   </head>
   <body>
-  	<div class="container" id="role">
+  	<div class="container" id="user">
   		<h1 class="lead"><%= title %></h1>
 
 		<div class="lead">
@@ -45,7 +45,7 @@
 		  	</tbody>
 		</table>
 
-	  	<div id="edit_roles" class="modal hide fade">
+	  	<div id="edit_users" class="modal hide fade">
 	    	<div class="modal-header">
 			    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			    <h3>编辑角色内容</h3>
@@ -80,9 +80,9 @@
     	
     <script src="/javascripts/libs/require.js"></script>
     <script type="text/javascript">
-    	var rolesData = <%- JSON.stringify(roles) %>;
+    	var usersData = <%- JSON.stringify(users) %>;
     	<% include ../requirejs-config %>
-    	require(['/javascripts/admin/role.js'])
+    	require(['/javascripts/admin/user.js'])
     </script>
   </body>
 </html>

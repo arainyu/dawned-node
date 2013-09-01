@@ -28,6 +28,12 @@ exports.forgetpwd = function(req, res) {
 	});
 };
 
+exports.users = function(req, res) {
+	res.render('backend/admin/users', {
+		title: '会员管理'
+	});
+};
+
 exports.roles = function(req, res) {
 	Role.getRolesAndMenus(function(err, data){
 		if (err) {
@@ -85,7 +91,7 @@ exports.api.role.put = function(req, res) {
 
 	if (acceptable) {
 		Role.newAndSave(req.params.id, req.body, function(err, data) {
-			result.responseAPI.call(result, err, data);
+			result.responseAPI.call(result, err, data, 200);
 		});
 	}
 };
