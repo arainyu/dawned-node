@@ -1,14 +1,5 @@
 define(['jquery', 'knockout', 'knockout.map', 'config', 'utils', 'bootstrap'], function($, ko, koMap, config, utils) {
 
-	var modal = {
-		openEditPanel: function() {
-			$('#edit_users').modal('show');
-		},
-		closeEditPanel: function() {
-			$('#edit_users').modal('hide');
-		}
-	};
-
 	var ViewModel = function(users, menus) {
 		var self = this;
 		var msgType = config.alertType;
@@ -56,16 +47,19 @@ define(['jquery', 'knockout', 'knockout.map', 'config', 'utils', 'bootstrap'], f
 			self.currentUserViewModel.password('');
 			self.currentUserViewModel.email('');
 			self.currentUserViewModel.role('');
+			self.currentUserViewModel.showPwdWarningCSS('');
 		};
 
 		self.editUser = function(data, e) {
-
+			pageMessages.clearMessage();
 			self.showEditPanel(true);
 			self.currentUserViewModel._id(data._id);
 			self.currentUserViewModel.loginName(data.loginName);
 			self.currentUserViewModel.name(data.name);
-			self.currentUserViewModel.password(data.password);
+			self.currentUserViewModel.email(data.email);
+			self.currentUserViewModel.password('');
 			self.currentUserViewModel.role(data.role._id);
+			self.currentUserViewModel.showPwdWarningCSS('warning');
 		};
 
 		self.removeUser = function(user) {
@@ -90,7 +84,7 @@ define(['jquery', 'knockout', 'knockout.map', 'config', 'utils', 'bootstrap'], f
 			var data = ko.toJS(self.currentUserViewModel);
 
 			if (data.name == "") {
-				showMessage("您必须输入名称");
+				showMessage("您必须输入名称", false, true);
 				return;
 			}
 
@@ -122,7 +116,9 @@ define(['jquery', 'knockout', 'knockout.map', 'config', 'utils', 'bootstrap'], f
 			name: ko.observable(''),
 			loginName: ko.observable(''),
 			password: ko.observable(''),
-			email: ko.observable('')
+			email: ko.observable(''),
+			role: ko.observable(''),
+			showPwdWarningCSS: ko.observable('')
 		};
 	};
 

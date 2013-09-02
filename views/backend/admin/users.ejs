@@ -16,18 +16,16 @@
 			<colgroup>
 				<col style="width: 10%" />
 				<col style="width: 10%" />
-				<col style="width: 13%" />
 				<col style="width: 10%" />
 				<col style="width: 10%" />
-				<col style="width: 16%" />
-				<col style="width: 16%" />
-				<col style="width: 20%" />
+				<col style="width: 21%" />
+				<col style="width: 22%" />
+				<col style="width: 22%" />
 			</colgroup>
 		    <thead>
 		  		<tr>
 			  		<th>登录名称</th>
 			  		<th>姓名</th>
-			  		<th>密码编码</th>
 			  		<th>E-Mail</th>
 			  		<th>角色名</th>
 			  		<th>最后登录日期</th>
@@ -42,9 +40,6 @@
 		  			</td>
 		  			<td>
 		  				<span data-bind="text: name"></span>
-		  			</td>
-		  			<td>
-		  				<span data-bind="text: password"></span>
 		  			</td>
 		  			<td>
 		  				<span data-bind="text: email"></span>
@@ -81,7 +76,7 @@
 					<div class="control-group">
 					    <label class="control-label" for="loginName">登录名：</label>
 					    <div class="controls">
-					      <input type="text" id="loginName" data-bind="value: currentUserViewModel.loginName" placeholder="登录名" />
+					      <input type="text" id="loginName" data-bind="value: currentUserViewModel.loginName, disable: currentUserViewModel.showPwdWarningCSS" placeholder="登录名" />
 					    </div>
 					</div>
 					<div class="control-group">
@@ -90,10 +85,11 @@
 					      <input type="text" id="name" data-bind="value: currentUserViewModel.name" placeholder="姓名" />
 					    </div>
 					</div>
-					<div class="control-group">
+					<div class="control-group" data-bind="css: currentUserViewModel.showPwdWarningCSS">
 					    <label class="control-label" for="password">密码：</label>
 					    <div class="controls">
 					      <input type="password" id="password" data-bind="value: currentUserViewModel.password" placeholder="密码" />
+                			<span class="help-inline"  data-bind="visible: currentUserViewModel.showPwdWarningCSS()">不修改请勿填写</span>
 					    </div>
 					</div>
 					<div class="control-group">

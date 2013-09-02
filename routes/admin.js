@@ -30,14 +30,14 @@ exports.forgetpwd = function(req, res) {
 };
 
 exports.users = function(req, res) {
-	User.getUsersAndRoles(function(err, data){
+	User.getUsersAndRoles(function(err, data) {
 		if (err) {
 			res.render('backend/admin/users', {
 				title: '加载错误',
 				roles: null,
 				users: null
 			});
-		}else{
+		} else {
 			res.render('backend/admin/users', {
 				title: '管理员管理',
 				roles: data.roles,
@@ -48,14 +48,14 @@ exports.users = function(req, res) {
 };
 
 exports.roles = function(req, res) {
-	Role.getRolesAndMenus(function(err, data){
+	Role.getRolesAndMenus(function(err, data) {
 		if (err) {
 			res.render('backend/admin/roles', {
 				title: '加载错误',
 				roles: null,
 				menus: null
 			});
-		}else{
+		} else {
 			res.render('backend/admin/roles', {
 				title: '角色管理',
 				roles: data.roles,
@@ -91,10 +91,15 @@ exports.api = {
 /* user api */
 exports.api.user.post = function(req, res) {
 	var result = new rest.ApiResultModel(res, rest.method.POST);
+	var acceptable = result.checkAcceptable(req.body.name === "" || req.body.password === "");
+	
+	if (acceptable) {
+		req.body.password = utils.md5(req.body.password);
 
-	User.newAndSave(null, req.body, function(err, data) {
-		result.responseAPI.call(result, err, data);
-	});
+		User.newAndSave(null, req.body, function(err, data) {
+			result.responseAPI.call(result, err, data);
+		});
+	}
 };
 
 exports.api.user.put = function(req, res) {
@@ -103,6 +108,8 @@ exports.api.user.put = function(req, res) {
 	var acceptable = result.checkAcceptable(!req.params.id);
 
 	if (acceptable) {
+		req.body.password = req.body.password !== "" ? utils.md5(req.body.password) : '';
+
 		User.newAndSave(req.params.id, req.body, function(err, data) {
 			result.responseAPI.call(result, err, data, 200);
 		});

@@ -26,8 +26,6 @@ exports.getUsersAndRoles = function(callback) {
 exports.newAndSave = function(id, data, callback) {
 	var userData = {
 		name: data.name,
-		loginName: data.loginName,
-		password: data.password,
 		email: data.email,
 		role: data.role,
 		lastLogin: data.lastLogin,
@@ -36,6 +34,9 @@ exports.newAndSave = function(id, data, callback) {
 
 
 	if (id === null) {
+		userData.loginName = data.loginName;
+		userData.password = data.password;
+
 		var user = new User(userData);
 		user.save(function(err, docs) {
 			if (err) {
@@ -49,6 +50,10 @@ exports.newAndSave = function(id, data, callback) {
 			if (err) {
 				callback(err, null);
 				return;
+			}
+
+			if (data.password !== '') {
+				userData.password = data.password;
 			}
 
 			doc.set(userData);

@@ -15,7 +15,7 @@ define(['jquery', 'knockout', 'config'], function($, ko, config) {
 		jqXHR.always(alwaysCallback);
 	};
 
-	function _PageMessages(){
+	function _PageMessages() {
 		this.message = {
 			showInDefault: ko.observable(false),
 			showInEditPanel: ko.observable(false),
@@ -24,19 +24,26 @@ define(['jquery', 'knockout', 'config'], function($, ko, config) {
 		};
 	};
 	_PageMessages.prototype.showMessage = function(msg, type, inEditPanel, successCallback) {
-			var showPosition = inEditPanel ? this.message.showInEditPanel : this.message.showInDefault;
-			showPosition(true);
-			
-			this.message.msg(msg);
-			this.message.type(type || config.alertType.DEFAULT);
+		var showPosition = inEditPanel ? this.message.showInEditPanel : this.message.showInDefault;
+		showPosition(true);
 
-			if (type === config.alertType.SUCCESS) {
-				setTimeout(function() {
-					showPosition(false);
-					successCallback();
-				}, 800);
-			}
-		};
+		this.message.msg(msg);
+		this.message.type(type || config.alertType.DEFAULT);
+
+		if (type === config.alertType.SUCCESS) {
+			setTimeout(function() {
+				showPosition(false);
+				successCallback();
+			}, 800);
+		}
+	};
+
+	_PageMessages.prototype.clearMessage = function(){
+		this.message.showInDefault(false);
+		this.message.showInEditPanel(false);
+		this.message.msg('');
+		this.message.type(config.alertType.DEFAULT);
+	};
 
 	return {
 		ajax: {
