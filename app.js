@@ -11,7 +11,7 @@ var express = require('express'),
   path = require('path');
 
 var app = express();
-var adminAPI = ["menu", "menutype", "role"];
+var adminAPI = ['menu', 'menutype', 'role', 'user'];
 var getDefaultApiUrl = function(moduleName, type) {
   var _default = '/'+ type +'/api/' + moduleName;
   var _bringId = _default + '/:id';

@@ -1,5 +1,6 @@
 var Menu = require('../controllers/admin/menu');
 var Role = require('../controllers/admin/role');
+var User = require('../controllers/admin/user');
 var utils = require('../common/utils');
 var rest = require('../common/rest');
 var returnCode = require('../configs').returnCode;
@@ -29,8 +30,20 @@ exports.forgetpwd = function(req, res) {
 };
 
 exports.users = function(req, res) {
-	res.render('backend/admin/users', {
-		title: '会员管理'
+	User.getUsersAndRoles(function(err, data){
+		if (err) {
+			res.render('backend/admin/users', {
+				title: '加载错误',
+				roles: null,
+				users: null
+			});
+		}else{
+			res.render('backend/admin/users', {
+				title: '管理员管理',
+				roles: data.roles,
+				users: data.users
+			});
+		}
 	});
 };
 
@@ -68,14 +81,48 @@ exports.menus = function(req, res) {
 
 
 /* api */
-
-
 exports.api = {
 	menu: utils.extend({}, rest.API),
 	menutype: utils.extend({}, rest.API),
-	role: utils.extend({}, rest.API)
+	role: utils.extend({}, rest.API),
+	user: utils.extend({}, rest.API)
 };
 
+/* user api */
+exports.api.user.post = function(req, res) {
+	var result = new rest.ApiResultModel(res, rest.method.POST);
+
+	User.newAndSave(null, req.body, function(err, data) {
+		result.responseAPI.call(result, err, data);
+	});
+};
+
+exports.api.user.put = function(req, res) {
+
+	var result = new rest.ApiResultModel(res, rest.method.PUT);
+	var acceptable = result.checkAcceptable(!req.params.id);
+
+	if (acceptable) {
+		User.newAndSave(req.params.id, req.body, function(err, data) {
+			result.responseAPI.call(result, err, data, 200);
+		});
+	}
+};
+
+exports.api.user.delete = function(req, res) {
+
+	var result = new rest.ApiResultModel(res, rest.method.DELETE);
+	var id = req.params.id;
+	var acceptable = result.checkAcceptable(!id);
+
+	if (acceptable) {
+		User.delete(id, function(err, data) {
+			result.responseAPI.call(result, err, data);
+		});
+	}
+};
+
+/* role api */
 exports.api.role.post = function(req, res) {
 	var result = new rest.ApiResultModel(res, rest.method.POST);
 
@@ -109,7 +156,7 @@ exports.api.role.delete = function(req, res) {
 	}
 };
 
-
+/* menu api */
 exports.api.menutype.post = function(req, res) {
 	var result = new rest.ApiResultModel(res, rest.method.POST);
 
