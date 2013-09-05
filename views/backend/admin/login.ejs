@@ -1,22 +1,36 @@
-<% include ../header %>
-    <div id="login">
-    	<h1><%= title %></h1>
-        <form id="login_form" class="single-form">
-    	<p>
-    		<label>用户名：</label>
-    		<input type="text" id="loginName" class="input-txt" />
-    	</p>
-    	<p>
-    		<label>密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
-    		<input type="password" id="password" class="input-txt" />
-    	</p>
-    	<p>
-    		<input type="submit" value="登录" class="input-btn" />
-    	</p>
-    	<p>
-    		<a href="regist" class="link-btn">注册新用户</a>
-    		<a href="forgetpwd" class="link-btn">忘记密码</a> 
-    	</p>
-        </form>
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+</head>
+<body>
+    <div class="container" id="login">
+        <div class="lead">
+            <h1 class="lead">
+            <%= title %></h1>
+            <form id="login_form" class="single-form">
+                <p>
+                    <label>用户名：</label>
+                    <input type="text" id="loginName" class="input-txt" />
+                </p>
+                <p>
+                    <label>密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
+                    <input type="password" id="password" class="input-txt" />
+                </p>
+                <p>
+                    <input type="submit" value="登录" class="btn btn-small btn-primary" />
+                </p>
+                <p>
+                    <a href="regist" class="link-btn">注册新用户</a>
+                    <a href="forgetpwd" class="link-btn">忘记密码</a>
+                </p>
+            </form>
+        </div>
     </div>
-<% include ../footer %>
+
+    <script src="/javascripts/libs/require.js"></script>
+    <script type="text/javascript">
+        <% include ../requirejs-config %>require(['/javascripts/admin/menu.js'])</script>
+</body>
+</html>

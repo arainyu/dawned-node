@@ -17,6 +17,12 @@ exports.login = function(req, res) {
 	});
 };
 
+exports..post.login = function(req, res) {
+	res.render('backend/admin/login', {
+		title: '管理员登录'
+	});
+};
+
 exports.regist = function(req, res) {
 	res.render('backend/admin/regist', {
 		title: '管理员注册'
