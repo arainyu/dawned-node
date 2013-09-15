@@ -2,7 +2,9 @@ define(['jquery', 'knockout', 'knockout.map', 'config', 'utils', 'bootstrap'], f
 
 	var modal = {
 		openEditPanel: function() {
-			$('#edit_roles').modal('show');
+			if(top!=this || self.frameElement.tagName=="IFRAME"){
+				$('#edit_roles').modal('show');
+			}
 		},
 		closeEditPanel: function() {
 			$('#edit_roles').modal('hide');

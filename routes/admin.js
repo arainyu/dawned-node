@@ -5,6 +5,14 @@ var utils = require('../common/utils');
 var rest = require('../common/rest');
 var returnCode = require('../configs').returnCode;
 
+exports.checkAuth = function(req, res, next) {
+	if (!req.session.admin) {
+		res.redirect('/admin/login');
+	} else {
+		next();
+	}
+};
+
 exports.index = function(req, res) {
 	res.render('backend/admin/index', {
 		title: '后台管理'
@@ -16,10 +24,10 @@ exports.login = function(req, res) {
 		title: '管理员登录'
 	});
 };
-
-exports..post.login = function(req, res) {
-	res.render('backend/admin/login', {
-		title: '管理员登录'
+exports.logout = function(req, res) {
+	req.session.admin = null;
+	res.render('backend/admin/logout', {
+		title: '注销成功'
 	});
 };
 
@@ -94,11 +102,46 @@ exports.api = {
 	user: utils.extend({}, rest.API)
 };
 
+exports.api.checkAuth = function(req, res, next) {
+	if (!req.session.admin) {
+		rest.responseStatus.internalServerError(res);
+	} else {
+		next();
+	}
+};
+
 /* user api */
+
+exports.api.user.login = function(req, res) {
+	var result = new rest.ApiResultModel(res, rest.method.POST);
+	var post = req.body;
+	post.password = utils.md5(post.password);
+	User.login(post.loginName, post.password, req.ip, function(err, user) {
+		var loginSuccess = result.checkAcceptable(err || user == null);
+		if (loginSuccess) {
+			req.session.admin = {
+				id: user._id,
+				loginName: user.loginName,
+				email: user.email,
+				name: user.name,
+				role: user.role,
+				lastLogin: user.lastLogin,
+				updateDate: user.updateDate
+			};
+			result.responseAPI.call(result, null, req.session.admin);
+		}
+	});
+};
+
+exports.api.user.logout = function(req, res) {
+	req.session.admin = null;
+	result.responseAPI.call(result, null, null);
+};
+
 exports.api.user.post = function(req, res) {
 	var result = new rest.ApiResultModel(res, rest.method.POST);
 	var acceptable = result.checkAcceptable(req.body.name === "" || req.body.password === "");
-	
+
 	if (acceptable) {
 		req.body.password = utils.md5(req.body.password);
 
