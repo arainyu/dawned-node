@@ -1,0 +1,93 @@
+<div class="navbar navbar-inverse navbar-static-top">
+  <div class="navbar-inner">
+    <div class="container">
+
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <a class="brand" href="#">Dawned Node 后台管理</a>
+
+      <div class="nav-collapse collapse">
+        <% 
+          var getActiveClass = function(path){
+              return(req.path == path?"active":"")
+          };
+          if (!session.admin){
+         %>
+        <ul class="nav">
+          <li class="<%=getActiveClass('/admin/login')%>
+            ">
+            <a href="/admin/login">登入</a>
+          </li>
+          <li class="<%=getActiveClass('/admin/regist')%>
+            ">
+            <a href="/admin/regist">申请管理员</a>
+          </li>
+        </ul>
+        <% } else{ %>
+        <ul class="nav">
+          <li class="active">
+            <a href="#">后台首页</a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              应用管理 <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="#">CMS</a>
+              </li>
+              <li>
+                <a href="#">CMS 1</a>
+              </li>
+              <li>
+                <a href="#">CMS 2</a>
+              </li>
+              <li class="divider"></li>
+              <li class="nav-header">在线游戏</li>
+              <li>
+                <a href="#">流氓足球</a>
+              </li>
+              <li>
+                <a href="#">流氓篮球</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav pull-right">
+          <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">当前用户： <i class="icon-user icon-white"></i>
+              
+              <%=session.admin.name%> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="#"> <i class="icon-edit"></i>
+                  更改资料
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="icon-wrench"></i>
+                  自定义设置
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="/admin/logout">
+                  <i class="icon-off"></i>
+                  注销
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <%}%></div>
+
+    </div>
+  </div>
+</div>
