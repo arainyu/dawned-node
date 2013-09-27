@@ -1,0 +1,37 @@
+
+.tabs{}
+.tab-heads{
+	display: block;
+	margin: 10px 0 0;
+	li{
+		float: left;
+		height: 36px;
+	}
+	a{
+		line-height: 36px;
+		display: inline-block;
+		padding: 0 20px;
+		background: @buttonBGColor;
+		color: #fff;
+		&.active{
+			background-color: @asideBGColor;
+			color: @menuBGColor;
+			font-weight: bold;
+			&:hover{
+				background-color: @asideBGColor;
+			}
+		}
+		&:hover{
+			background-color: @buttonHoverBGColor;
+		}
+	}
+}
+.tab-content{
+	border-top: 0;
+	padding: 20px 0;
+	display: none;
+	&.active{
+		display: block;
+		background-color: @asideBGColor;
+	}
+}

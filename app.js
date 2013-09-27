@@ -38,6 +38,7 @@ app.configure(function() {
 	app.use(express.session());
 	app.use(function(req, res, next) {
 		res.locals.csrf = req.session ? req.session._csrf : '';
+		res.locals.version = configs.config.debug?'':configs.config.version;
 		res.locals.req = req;
 		res.locals.session = req.session;
 		next();
@@ -77,6 +78,10 @@ app.all("*", function(req, res, next) {
 
 
 app.get('/', routes.index);
+app.get('/login', routes.login);
+
+
+
 app.get('/admin/index', admin.index);
 app.get('/admin/users', admin.users);
 app.get('/admin/login', admin.login);
@@ -85,8 +90,6 @@ app.get('/admin/regist', admin.regist);
 app.get('/admin/forgetpwd', admin.forgetpwd);
 app.get('/admin/roles', admin.roles);
 app.get('/admin/menus', admin.menus);
-
-console.log()
 
 adminAPI.forEach(function(item, index) {
 	var defaultApiUrl = getDefaultApiUrl(item, 'admin');

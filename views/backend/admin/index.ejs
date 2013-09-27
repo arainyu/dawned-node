@@ -13,9 +13,9 @@
 				<div class="accordion" id="accordion_menu" data-bind="foreach:menuType">
 					<div class="accordion-group">
 						<div class="accordion-heading">
-							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_menu" data-bind="attr: {href: _id}, text: name"></a>
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_menu" data-bind="attr: {href: '#'+_id}, text: name"></a>
 						</div>
-						<div class="accordion-body collapse in" data-bind="attr:{id: _id}">
+						<div class="accordion-body collapse" data-bind="attr:{id: _id}">
 							<div class="accordion-inner">
 								<ul class="nav nav-list" data-bind="foreach: menus">
 									<li>

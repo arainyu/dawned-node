@@ -1,0 +1,245 @@
+@import "common/reset.less";
+
+@import "common/function.less";
+@import "common/variables.less";
+
+@import "common/sprites.less";
+@import "common/forms.less"; 
+
+#header {
+    height: 50px;
+    background: @menuBGColor;
+    position: fixed;
+    z-index: 100;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+}
+
+#logo {
+    background: @buttonBGColor;
+    border-right: 1px solid @buttonBGColor; //81a600
+}
+
+#logo a {
+    background: url(/images/logo.png) no-repeat center;
+    width: 172px;
+    text-indent: -999px;
+}
+
+#persion-user{
+    border-left: 1px solid @borderColor;
+}
+
+#container, #header-container {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+#footer{
+    width: 960px;
+    margin: 10px auto;
+    padding: 10px 20px 10px;
+    background: #fff;
+}
+
+#nav_list{
+    background-color: @asideBGColor;
+}
+#ad_list{
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.simple-editor{
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid @buttonBGColor;
+    textarea{
+        width: 100%;
+        border: 0;
+    }
+}
+
+.edit_form{
+
+}
+
+.edit_form_fieldset{
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+.edit_form_fieldset legend{
+    padding: 0 10px;
+}
+
+.nav {
+    font-size: 0px;
+}
+
+.nav li {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    border-right: 1px solid @borderColor;
+    line-height: 50px;
+    font-size: 14px;
+}
+
+.nav li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0px 20px;
+    height: 50px;
+    display: block;
+}
+
+.nav li a:hover {
+    background-color: @menuHoverBGColor;
+}
+
+.search {
+    line-height: 30px;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+.search-input {
+    border: 0;
+    padding: 8px 5px;
+}
+
+.search-button {
+    border: 0;
+    background-color: #7dc234;
+    color: #eee;
+    padding: 8px 10px;
+}
+
+.three-columns,.one-columns {
+    margin: 0 0 10px;
+    background-color: #fff;
+    overflow:hidden;
+}
+
+.aside-left,.aside-right {
+    position: relative;
+    float: left;
+    width: 213px;
+    margin: 0 -213px 0 0;
+    margin-bottom:-3000px; 
+    padding-bottom:3000px;
+}
+
+.aside-right {
+    float: right;
+    width: 250px;
+    margin: 0 0 -3000px -250px;
+}
+
+.content-mid {
+    float: left;
+    width: 100%;
+}
+
+.content-mid-container {
+    margin: 0 270px 0 233px;
+}
+
+.aside-left,.aside-right,.content-mid-container{
+    padding-top: 20px;
+}
+
+.aside-nav{
+    margin-left: 20px;
+    margin-right: 20px;
+    line-height: 25px;
+}
+.split-form{}
+.split-form fieldset{
+    border-width: 1px 0 0 0;
+    border-color: #bbb;
+    border-style: solid;
+    margin: 10px 0 0 0;
+    padding: 0 0 6px 15px;
+    zoom: 1;
+    clear: both;
+    overflow: hidden;
+    display: block;
+}
+.split-form legend{
+    padding: 1px 5px 0; 
+    font-weight: bold;
+}
+.split-form .null-legend{
+    height: 1px;
+    border-width: 0 0 1px 0;
+}
+
+.feed-list{
+    margin: 12px 0;
+    padding: 10px 0;
+    border-top: 3px solid @borderColor;
+}
+.feed-item{
+    border-bottom: 1px solid #eee;
+    padding: 15px 5px;
+}
+.person-info{
+
+}
+.avatar{
+    border-radius: 30px;
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+.avatar:hover{
+    border-radius: 0px;
+}
+.person-info-desc{
+    margin: 0 20px 0 80px;
+}
+.feed-content{
+    margin-left: 80px;
+}
+.feed-title{
+    
+}
+.feed-body{
+    margin: 10px 0;
+}
+.feed-time, .feed-tags, .feed-action{
+    color: #ccc;
+    font-size: 12px;
+    i{
+        margin-top: 1px;
+    }
+}
+.feed-tags a:hover, .feed-action a:hover{
+    
+}
+.feed-action{
+    
+}
+
+.footer-list{
+    width: 170px;
+    margin:10px;
+}
+.footer-list a{
+    color: @menuBGColor;
+}
+.footer-list a:hover{
+    color: @linkHoverColor;
+};
+.footer-links{
+    margin:10px;
+}
+.footer-copy, .footer-copy a{
+    color: #ccc;
+}

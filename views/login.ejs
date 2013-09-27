@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title %></title>
+	<link rel='stylesheet' href='/stylesheets/login.css' />
+</head>
+<body class="theme1">
+	<div id="login">
+		<div id="header">
+			<h1 id="logo">花皮球</h1>
+			<h2 id="welcome">欢迎进入您的球迷世界</h2>
+		</div>
+		<div class="tabs" id="tabs">
+			<ul class="tab-heads f-cb">
+				<li>
+					<a data-toggle="tab" href="#login_form" class="active">登录</a>
+				</li>
+				<li>
+					<a data-toggle="tab" href="#reg_form">注册球迷</a>
+				</li>
+			</ul>
+			<div id="login_form" class="tab-content active">
+				<p class="horizontal-item">
+					<label>用户名/邮箱：</label>
+					<input type="text" class="input" placeholder="用户名/邮箱" />
+				</p>
+				<p class="horizontal-item">
+					<label>密码：</label>
+					<input type="text" class="input" placeholder="密码" />
+				</p>
+				<p class="horizontal-item no-label">
+					<button id="btn_login" class="btn">登录</button>
+				</p>
+				<p class="horizontal-item no-label">
+					<a href="#" id="btn_forget_password">忘记密码</a>
+				</p>
+			</div>
+			<div id="reg_form" class="tab-content">
+				<p class="horizontal-item">
+					<label>用户名：</label>
+					<input type="text" class="input" placeholder="用户名" />
+				</p>
+				<p class="horizontal-item">
+					<label>邮箱：</label>
+					<input type="text" class="input" placeholder="邮箱" />
+				</p>
+				<p class="horizontal-item">
+					<label>密码：</label>
+					<input type="text" class="input" placeholder="密码" />
+				</p>
+				<p class="horizontal-item">
+					<label>确认密码：</label>
+					<input type="text" class="input" placeholder="确认密码" />
+				</p>
+				<p class="horizontal-item no-label">
+					<button id="btn_login" class="btn">注册新用户</button>
+				</p>
+			</div>
+		</div>
+	</div>
+	<script src="/javascripts/libs/require<%=version%>.js" data-main="/javascripts/login<%=version%>"></script>
+</body>
+</html>

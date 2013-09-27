@@ -94,7 +94,10 @@ define(['jquery', 'knockout', 'knockout.map', 'config', 'utils', 'bootstrap'], f
 
 			var id = (typeof menuType._id !== 'function')?menuType._id:menuType._id();
 
-			if (!id) return;
+			if (!id) {
+				self.list.remove(menuType);
+				return;
+			};
 
 			utils.ajax.delete('/admin/api/menutype/' + id, null, {
 				done: function(data) {
@@ -156,6 +159,9 @@ define(['jquery', 'knockout', 'knockout.map', 'config', 'utils', 'bootstrap'], f
 			var id = (typeof menu._id !== 'function')?menu._id:menu._id();
 
 			if (!id) {
+				$.each(self.list(), function() {
+						this.menus.remove(menu);
+					});
 				return;
 			}
 

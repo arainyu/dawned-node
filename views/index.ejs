@@ -1,11 +1,225 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<head>
+	<title><%= title %></title>
+	<link rel='stylesheet' href='/stylesheets/index.css' />
+</head>
+<body>
+	<div id="header">
+		<div id="header-container">
+			<ul class="nav f-fl" id="menu">
+				<li id="logo">
+					<a href="http://www.huapiqiu.com">花皮球</a>
+				</li>
+				<li>
+					<a href="#">首页</a>
+				</li>
+				<li>
+					<a href="#">热门</a>
+				</li>
+				<li>
+					<a href="#">应用</a>
+				</li>
+				<li>
+					<a href="#">游戏</a>
+				</li>
+			</ul>
+			<div class="search f-fl">
+				<input type="text" class="search-input" />
+				<button class="search-button btn"> <i class="icon-search icon-white"></i>
+					搜索
+				</button>
+			</div>
+			<ul class="nav f-fr" id="person">
+				<li id="persion-user">
+					<a href="#"> <i class="icon-user icon-white"></i>
+						Arain
+					</a>
+				</li>
+				<li>
+					<a href="#" title="消息">
+						<i class="icon-envelope icon-white"></i>
+					</a>
+				</li>
+				<li>
+					<a href="#" title="发送">
+						<i class="icon-plane icon-white"></i>
+					</a>
+				</li>
+				<li>
+					<a href="#" title="设置">
+						<i class="icon-asterisk icon-white"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="container" class="three-columns f-cb">
+		<div class="aside-left" id="nav_list">
+			<ul class="aside-nav">
+				<li>
+					<a href="#">
+						<i class="icon-home"></i>
+						首页
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="icon-envelope"></i>
+						消息
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="icon-heart"></i>
+						收藏
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="icon-flag"></i>
+						提到我的
+					</a>
+				</li>
+			</ul>
+			<form class="split-form">
+				<fieldset class="null-legend">
+					<legend></legend>
+				</fieldset>
+			</form>
+
+			<ul class="aside-nav m-t10">
+				<li>
+					<a href="#">首页</a>
+				</li>
+				<li>
+					<a href="#">消息</a>
+				</li>
+				<li>
+					<a href="#">搜藏</a>
+				</li>
+				<li>
+					<a href="#">提到我的</a>
+				</li>
+			</ul>
+
+			<form class="split-form">
+				<fieldset>
+					<legend>俱乐部</legend>
+				</fieldset>
+			</form>
+
+			<ul class="aside-nav">
+				<li>
+					<a href="#">首页</a>
+				</li>
+				<li>
+					<a href="#">消息</a>
+				</li>
+				<li>
+					<a href="#">搜藏</a>
+				</li>
+				<li>
+					<a href="#">提到我的</a>
+				</li>
+			</ul>
+		</div>
+		<div class="content-mid">
+			<div class="content-mid-container">
+				<div class="edit-form">
+					<form class="splite-form">
+						<fieldset>
+							<legend>俱乐部</legend>
+						</fieldset>
+						<div class="simple-editor">
+							<textarea></textarea>
+						</div>
+						<button class="btn btn-small">
+							<i class="icon-plus icon-white"></i>
+							发布
+						</button>
+					</form>
+				</div>
+				<div class="feed-list">
+					<% for(var i=0; i<10; i++){%>
+					<div class="feed-item f-cb">
+						<div class="person-info f-fl">
+							<a href="#" title="Arain" class="avatar">
+								<img src="/images/av.jpg" />
+							</a>
+						</div>
+						<div class="feed-content">
+							<h2 class="feed-title">
+								<a href="#">日本人在明治维新前不吃肉，是真的吗，为什么？</a>
+							</h2>
+							<div class="feed-time">发布时间：2013-09-18</div>
+							<div class="feed-body">
+								<p>
+									人口压力和锁国政策导致绝大多数人处于马尔萨斯极限即只能获得维持生存的最低生活资料。德川末期一个非技术劳动力获得的食物为4.5磅大米/月…
+								</p>
+							</div>
+							<div class="f-cb feed-actions">
+								<div class="feed-tags f-fl">
+									<a href="#">
+										<i class="icon-tag"></i>
+										<span>足球</span>
+									</a>
+									<a href="#">
+										<i class="icon-tag"></i>
+										<span>NBA</span>
+									</a>
+								</div>
+								<div class="feed-action f-fr">
+
+									<a href="#">
+										<i class="icon-comment"></i>
+										3条评论
+									</a>
+									<a href="#">
+										<i class="icon-share"></i>
+										499条转发
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<%}%></div>
+			</div>
+		</div>
+		<div class="aside-right" id="ad_list">
+			<div class="person-info f-cb">
+				<a href="#" title="Arain" class="avatar f-fl">
+					<img src="/images/av.jpg" />
+				</a>
+				<div class="person-info-desc">
+					<h3>Arain</h3>
+					<p><span>0级</span> <span>球童</span> </p>
+					<p>德川末期一个非技术劳动力获得的食物，德川末期...</p>
+				</div>
+			</div>
+			<form class="split-form">
+				<fieldset>
+					<legend>俱乐部</legend>
+				</fieldset>
+			</form>
+
+			<ul class="aside-nav">
+				<li>
+					<a href="#">首页</a>
+				</li>
+				<li>
+					<a href="#">消息</a>
+				</li>
+				<li>
+					<a href="#">搜藏</a>
+				</li>
+				<li>
+					<a href="#">提到我的</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<% include controls/_footer %>
+	<script src="/javascripts/libs/require<%=version%>.js" data-main="/javascripts/index<%=version%>"></script>
+</body>
 </html>
